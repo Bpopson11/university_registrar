@@ -9,35 +9,36 @@
     <div class="container">
       <h1>University of Portland Student Database</h1>
 
-      <p>Add a new student below:</p>
-
-      <form action='/students' method='post'>
-          <label for='name'>Student Name:</label>
-          <input id='name' name='name' type='text' required>
-
-          <label for='enroll_date'>Date of Enrollment:</label>
-          <input id='enroll_date' name='enroll_date' type='date' required>
-
-
-          <button type='submit'>Add Profile</button>
-      </form>
-
-      {% if students %}
-          <p>Here are all your students</p>
+      {% if courses is not empty %}
+          <p>Here are all of {{ student.getName }}'s courses</p>
           <ul>
-                {% for student in students %}
-                    <li>{{ student.getName }}</li>
+                {% for course in courses %}
+                    <li>{{ course.getCourse_name }}</li>
                     <ul>
-                      <li>Date of Enrollment: {{ student.getEnroll_date }}</li>
+                    <li>{{ course.getCourse_number }}</li>                      
                     </ul>
+
                 {% endfor %}
           </ul>
       {% else %}
-          <p>There are no student profiles yet!</p>
+          <p>This student has not signed up for a class yet!</p>
       {% endif %}
 
+      <p>Add a new course below:</p>
+      <form action='/add_course' method='post'>
+        <input id="student_id" name="student_id" type="hidden" value="{{ student.getId }}">
+        <label for='course_id'>Course Name:</label>
+        <select id='course_id' name='course_id' type='text'><br>
+          {% if all_courses is not empty %}
+              {% for course in all_courses %}
+                <option value="{{ course.getId }}"> {{ course.getCourse_name }} </option>
+              {% endfor %}
+              {% endif %}
+        </select>
+        <button type='submit' name='course_btn'>Add</button>
+      </form>
       <form action='/delete_all_students' method='post'>
-        <button type='submit'>Clear All</button>
+        <button type='submit' class="delete_student">Clear All</button>
       </form>
     </div>
   </body>

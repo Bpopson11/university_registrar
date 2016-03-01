@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" media="screen"  charset="utf-8">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <title>U of P</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>University of Portland Student Database</h1>
+      <h3>{{ course.getCourse_name }}</h3>
+      {% if students is not empty %}
+          <p>Here are all of {{ course.getCourse_name }}'s class roster</p>
+          <ul>
+                {% for student in students %}
+                    <li>{{ student.getName }}</li>
+                    <ul>
+                    <li>{{ student.getEnroll_date }}</li>
+                    </ul>
+                {% endfor %}
+          </ul>
+      {% else %}
+          <p>This course does not have any students yet!</p>
+      {% endif %}
+
+      <form action='/delete_all_courses' method='post'>
+        <button type='submit' class="delete_course">Clear All</button>
+      </form>
+    </div>
+  </body>
+</html>

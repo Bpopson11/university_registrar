@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css" media="screen"  charset="utf-8">
     <link rel="stylesheet" href="/css/normalize.css">
     <meta charset="utf-8">
-    <title>To Do List</title>
+    <title>U of P</title>
   </head>
   <body>
       <div class="jumbotron">
@@ -24,11 +24,11 @@
 
             <button type='submit', name='student_btn'>Add</button>
           </form>
-            {% if students %}
+            {% if students is not empty %}
                 <p>Here are all your students</p>
                 <ul>
                       {% for student in students %}
-                          <li>{{ student.getName }}</li>
+                          <li><a href="/students/{{ student.getId }}">{{ student.getName }}</a></li>
                           <ul>
                             <li>Date of Enrollment: {{ student.getEnroll_date }}</li>
                           </ul>
@@ -37,6 +37,9 @@
             {% else %}
                 <p>There are no student profiles yet!</p>
             {% endif %}
+            <form action='/delete_all_students' method='post'>
+              <button type='submit' class="delete_all_students">Clear All</button>
+            </form>
 
         </div>
         <div class="col col-md-6">
@@ -54,7 +57,7 @@
                 <p>Here are all your courses</p>
                 <ul>
                       {% for course in courses %}
-                          <li>{{ course.getCourse_name }}</li>
+                          <li><a href="/courses/{{ course.getId }}">{{ course.getCourse_name }}</a></li>
                           <ul>
                             <li>Course Number: {{ course.getCourse_number }}</li>
                           </ul>
@@ -63,6 +66,9 @@
             {% else %}
                 <p>There are no course profiles yet!</p>
             {% endif %}
+            <form action='/delete_all_courses' method='post'>
+              <button type='submit' class="delete_all_courses">Clear All</button>
+            </form>
 
         </div>
       </div>
