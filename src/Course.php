@@ -1,26 +1,26 @@
 <?php
 class Course
 {
-    private $name;
+    private $course_name;
     private $course_number;
     private $id;
 
 
-    function __construct($name, $course_number, $id = null)
+    function __construct($course_name, $course_number, $id = null)
     {
-        $this->name = $name;
+        $this->course_name = $course_name;
         $this->course_number = $course_number;
         $this->id = $id;
     }
 
-    function setName($new_name)
+    function setCourse_name($new_course_name)
     {
-        $this->name = (string) $new_name;
+        $this->course_name = (string) $new_course_name;
     }
 
-    function getName()
+    function getCourse_name()
     {
-        return $this->name;
+        return $this->course_name;
     }
 
     function setCourse_number($new_number)
@@ -40,7 +40,7 @@ class Course
 
     function save()
     {
-        $GLOBALS['DB']->exec("INSERT INTO courses (name, course_number) VALUES ('{$this->getName()}', '{$this->getCourse_number()}')");
+        $GLOBALS['DB']->exec("INSERT INTO courses (course_name, course_number) VALUES ('{$this->getCourse_name()}', '{$this->getCourse_number()}')");
         $this->id = $GLOBALS['DB']->lastInsertId();
     }
 
@@ -54,10 +54,10 @@ class Course
         $returned_courses = $GLOBALS['DB']->query("SELECT * FROM courses;");
         $courses = array();
         foreach ($returned_courses as $course) {
-            $name = $course['name'];
+            $course_name = $course['course_name'];
             $course_number = $course['course_number'];
             $id = $course['id'];
-            $new_course = new Course($name, $course_number, $id);
+            $new_course = new Course($course_name, $course_number, $id);
             array_push($courses, $new_course);
         }
         return $courses;
@@ -68,10 +68,10 @@ class Course
         $GLOBALS['DB']->exec("DELETE FROM courses WHERE id = {$this->getId()};");
     }
 
-    function updateCourseName($new_name)
+    function updateCourseName($new_course_name)
     {
-        $GLOBALS['DB']->exec("UPDATE courses SET name = '{$new_name}' WHERE id = {$this->getId()};");
-        $this->setName($new_name);
+        $GLOBALS['DB']->exec("UPDATE courses SET course_name = '{$new_course_name}' WHERE id = {$this->getId()};");
+        $this->setCourse_name($new_course_name);
     }
 
     static function findCourse($search_id)
@@ -89,7 +89,26 @@ class Course
 
     function addStudent($student)
     {
-        $GLOBALS['DB']->exec("INSERT INTO roster (course_id, student_id) VALUES ({$student->getId()}, {$this->getId()});");
+        $GLOBALS['DB']->exec("INSERT INTO roster (student_id, course_id)  VALUES ({$student->getId()}, {$this->getId()});");
+    }
+
+    function getStudents()
+    {
+        $returned_students = $GLOBALS['DB']->query("SELECT students.* FROM courses
+          JOIN roster ON (courses.id = roster.course_id)
+          JOIN students ON (roster.student_id = students.id)
+          WHERE courses.id = {$this->getId()};");
+
+        $students = array();
+
+        foreach($returned_students as $student) {
+            $name = $student['name'];
+            $enroll_date = $student['enroll_date'];
+            $id = $student['id'];
+            $new_student = new Student($name, $enroll_date, $id);
+            array_push($students, $new_student);
+        }
+        return $students;
     }
 
   }
