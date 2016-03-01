@@ -18,9 +18,23 @@
 
         protected function tearDown()
         {
-            Student:deleteAll();
+            Student::deleteAll();
         }
 
+        function test_getName()
+        {
+            //Arrange
+            $name = "Bob Morley";
+            $enroll_date = "2014-8-20";
+            $id = null;
+            $test_student = new Student ($name, $enroll_date, $id);
+
+            //Act
+            $result = $test_student->getName();
+
+            //Assert
+            $this->assertEquals("Bob Morley", $result);
+        }
 
     }
 
