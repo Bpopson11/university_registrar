@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" media="screen"  charset="utf-8">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <title>U of P</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>University of Portland Student Database</h1>
+
+      <p>Add a new student below:</p>
+
+      <form action='/students' method='post'>
+          <label for='name'>Student Name:</label>
+          <input id='name' name='name' type='text' required>
+
+          <label for='enroll_date'>Date of Enrollment:</label>
+          <input id='enroll_date' name='enroll_date' type='date' required>
+
+
+          <button type='submit'>Add Profile</button>
+      </form>
+
+      {% if students %}
+          <p>Here are all your students</p>
+          <ul>
+                {% for student in students %}
+                    <li>{{ student.getName }}</li>
+                    <ul>
+                      <li>Date of Enrollment: {{ student.getEnroll_date }}</li>
+                    </ul>
+                {% endfor %}
+          </ul>
+      {% else %}
+          <p>There are no student profiles yet!</p>
+      {% endif %}
+
+      <form action='/delete_all_students' method='post'>
+        <button type='submit'>Clear All</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -111,7 +111,5 @@ class Course
         return $students;
     }
 
-
-
   }
 ?>

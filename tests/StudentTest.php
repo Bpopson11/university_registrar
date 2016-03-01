@@ -7,7 +7,7 @@
 
     require_once "src/Student.php";
 
-    $server = 'mysql:host=localhost;dbname=university';
+    $server = 'mysql:host=localhost;dbname=university_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);

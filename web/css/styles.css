@@ -1,0 +1,29 @@
+body {
+  background-color: #f2f4ea;
+  color: #676666;
+  font-size: 18px;
+}
+
+.jumbotron {
+    padding-left: 30px;
+    background-color: #e6dbc2;
+}
+
+a {
+  color: #74a498;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #b193b2;
+}
+
+button {
+    background-color: #74a498;
+    color: #f2f4ea;
+}
+
+button:hover {
+    background-color: #568478;
+    color: #f2f4ea !important;
+}
