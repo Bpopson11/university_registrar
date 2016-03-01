@@ -1,0 +1,21 @@
+For downloading composer:
+composer install --prefer-source --no-interaction
+//
+
+
+Don't for get your .gitignore for vendor!!
+//
+
+
+Starting up mySQL at epicodus:
+
+mysql.server start followed by the command mysql -uroot -proot.
+
+Staring up mySQL at home:
+
+If you're working with MAMP at home, once you've started the servers, you can access your MySQL terminal by entering /Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot.
+
+Use localhost:8889 if you're using MAMP
+
+
+Now use your browser to open localhost:8080/phpmyadmin if you're at Epicodus, or localhost:8888/phpmyadmin if you're at home using MAMP.
