@@ -74,7 +74,7 @@ class Student
         $this->setName($new_name);
     }
 
-    function findStudent($search_id)
+    static function findStudent($search_id)
     {
         $found_student = null;
         $students = Student::getAll();
