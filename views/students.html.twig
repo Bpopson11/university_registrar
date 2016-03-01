@@ -6,8 +6,11 @@
     <title>U of P</title>
   </head>
   <body>
+    <div class="jumbotron">
+      <h1>Course Database</h1>  
+    </div>
     <div class="container">
-      <h1>University of Portland Student Database</h1>
+
 
       {% if courses is not empty %}
           <p>Here are all of {{ student.getName }}'s courses</p>
@@ -15,7 +18,7 @@
                 {% for course in courses %}
                     <li>{{ course.getCourse_name }}</li>
                     <ul>
-                    <li>{{ course.getCourse_number }}</li>                      
+                    <li>{{ course.getCourse_number }}</li>
                     </ul>
 
                 {% endfor %}

@@ -6,8 +6,10 @@
     <title>U of P</title>
   </head>
   <body>
+    <div class="jumbotron">
+      <h1>Student Database</h1>
+    </div>
     <div class="container">
-      <h1>University of Portland Student Database</h1>
       <h3>{{ course.getCourse_name }}</h3>
       {% if students is not empty %}
           <p>Here are all of {{ course.getCourse_name }}'s class roster</p>
@@ -22,6 +24,20 @@
       {% else %}
           <p>This course does not have any students yet!</p>
       {% endif %}
+
+      <p>Add a new student below:</p>
+      <form action='/add_student' method='post'>
+        <input id="course_id" name="course_id" type="hidden" value="{{ course.getId }}">
+        <label for='student_id'>Student Name:</label>
+        <select id='student_id' name='student_id' type='text'><br>
+          {% if all_students is not empty %}
+              {% for student in all_students %}
+                <option value="{{ student.getId }}"> {{ student.getName }} </option>
+              {% endfor %}
+              {% endif %}
+        </select>
+        <button type='submit' name='student_btn'>Add</button>
+      </form>
 
       <form action='/delete_all_courses' method='post'>
         <button type='submit' class="delete_course">Clear All</button>

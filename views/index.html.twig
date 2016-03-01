@@ -20,7 +20,7 @@
             <label for='name'>Student Name:</label>
             <input id='name' name='name' type='text' class='form-control'><br>
             <label for='enroll_date'>Date of Enrollment:</label>
-            <input id='enroll_date' name='enroll_date' type='date' class='form-control'>
+            <input id='enroll_date' name='enroll_date' type='date' class='form-control'><br>
 
             <button class='btn' type='submit', name='student_btn'>Add</button>
           </form>
@@ -31,7 +31,7 @@
                           <li><a href="/students/{{ student.getId }}">{{ student.getName }}</a></li>
                           <ul>
                             <li>Date of Enrollment: {{ student.getEnroll_date }}</li>
-                          </ul>
+                          </ul><br>
                       {% endfor %}
                 </ul>
             {% else %}
@@ -49,7 +49,7 @@
             <input id='course_name' name='course_name' type='text' class='form-control'><br>
 
             <label for='course_number'>Course Number:</label>
-            <input id='course_number' name='course_number' type='text' class='form-control'>
+            <input id='course_number' name='course_number' type='text' class='form-control'><br>
 
             <button type='submit' class='btn' name='course_btn'>Add</button>
           </form>
@@ -60,7 +60,7 @@
                           <li><a href="/courses/{{ course.getId }}">{{ course.getCourse_name }}</a></li>
                           <ul>
                             <li>Course Number: {{ course.getCourse_number }}</li>
-                          </ul>
+                          </ul><br>
                       {% endfor %}
                 </ul>
             {% else %}
