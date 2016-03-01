@@ -70,7 +70,7 @@ class Student
 
     function updateStudentName($new_name)
     {
-        $GLOBALS['DB']->exect("UPDATE students SET name = '{$new_name}' WHERE id = {$this->getId()};");
+        $GLOBALS['DB']->exec("UPDATE students SET name = '{$new_name}' WHERE id = {$this->getId()};");
         $this->setName($new_name);
     }
 
