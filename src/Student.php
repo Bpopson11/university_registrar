@@ -87,5 +87,29 @@ class Student
         return $found_student;
     }
 
+    function addCourse($course)
+    {
+        $GLOBALS['DB']->exec("INSERT INTO roster (course_id, student_id) VALUES ({$course->getID()}, {$this->getId()});");
+    }
+
+    function getCourses()
+    {
+        $returned_courses = $GLOBALS['DB']->query("SELECT courses.* FROM students
+            JOIN roster ON (students.id = roster.student_id)
+            JOIN courses ON (roster.course_id = courses.id)
+            WHERE students.id = {$this->getId()};");
+
+        $courses = array() ;
+
+        foreach($returned_courses as $course) {
+            $course_name = $course['course_name'];
+            $course_number = $course['course_number'];
+            $id = $course['id'];
+            $new_course = new Course($course_name, $course_number, $id);
+            array_push($courses, $new_course);
+        }
+        return $courses;
+    }
+
   }
 ?>
