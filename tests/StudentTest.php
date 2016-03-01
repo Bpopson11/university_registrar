@@ -19,6 +19,7 @@
         protected function tearDown()
         {
             Student::deleteAll();
+            Course::deleteAll();
         }
 
         function test_getName()
