@@ -55,7 +55,7 @@ class Student
         $students = array();
         foreach ($returned_students as $student) {
             $name = $student['name'];
-            $enroll_date = $studnet['enroll_date'];
+            $enroll_date = $student['enroll_date'];
             $id = $student['id'];
             $new_student = new Student($name, $enroll_date, $id);
             array_push($students, $new_student);
@@ -86,6 +86,6 @@ class Student
         }
         return $found_student;
     }
-    
+
   }
 ?>

@@ -51,6 +51,28 @@
             $this->assertEquals("2014-8-20", $result);
         }
 
+        function test_getAll()
+        {
+            //Arrange
+            $name = "Bob Morley";
+            $enroll_date = "2014-08-20";
+            $id = null;
+            $test_student = new Student ($name, $enroll_date, $id);
+            $test_student->save();
+
+            $name2 = "Octavia Blake";
+            $enroll_date2 = "2015-08-20";
+            $id = null;
+            $test_student2 = new Student ($name2, $enroll_date2, $id);
+            $test_student2->save();
+
+            //Act
+            $result = Student::getAll();
+
+            //Assert
+            $this->assertEquals([$test_student, $test_student2], $result);
+        }
+
     }
 
 ?>
