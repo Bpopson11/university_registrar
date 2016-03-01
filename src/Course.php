@@ -87,5 +87,10 @@ class Course
         return $found_course;
     }
 
+    function addStudent($student)
+    {
+        $GLOBALS['DB']->exec("INSERT INTO roster (course_id, student_id) VALUES ({$student->getId()}, {$this->getId()});");
+    }
+
   }
 ?>
