@@ -161,8 +161,7 @@
             $id = null;
             $test_course = new Course ($course_name, $course_number, $id);
             $test_course->save();
-
-
+            
             $name = "Bob Morley";
             $enroll_date = "2014-08-20";
             $test_student = new Student($name, $enroll_date, $id);
