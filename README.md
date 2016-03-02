@@ -1,12 +1,12 @@
-# _Repeated Word Finder_
+# _University Registrar_
 
-#### _Find how many times and where a word is repeated in a sentence/paragraph/string._
+#### _Allows a registrar to add courses, students, and departments to a database and connect all three._
 
 #### By _**Brianna Popson**_
 
 ## Description
 
-_This app was built with PHP using Silex and Twig templates. The purpose of this app is for a user to enter a string of words be it a paragraph, a singe sentence, or a couple sentences. From there the user can enter the word s/he wishes to see if it is repeated in the string and how many times. The app will return the number of instances of the selected word, as well as reprint the original string with the chosen word appearing in all caps so the user may find it easily._
+_This app was built with PHP using Silex and Twig templates. The purpose of this app is for a registrar to be able to keep track of university courses, students, and discipline departments._
 
 ## Setup/Installation Requirements
 
@@ -21,11 +21,11 @@ _This app was built with PHP using Silex and Twig templates. The purpose of this
 
 ## Known Bugs
 
-_As of 2/19/16 the stringHighlight method does not work properly on single letter words such as "a", or "I". Instead the method will make every instance of that letter capital. The instance count for those words is correct though._
+_No known bugs (yet)._
 
 ## Technologies Used
 
-_This app was built in PHP using HTML alongside Silex and Twig._
+_This app was built in PHP using HTML alongside Silex, Twig, and mySql._
 
 ### License
 
