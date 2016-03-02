@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="jumbotron">
-      <h1>Course Database</h1>  
+      <h1>Course Database</h1>
     </div>
     <div class="container">
 
@@ -18,7 +18,7 @@
                 {% for course in courses %}
                     <li>{{ course.getCourse_name }}</li>
                     <ul>
-                    <li>{{ course.getCourse_number }}</li>
+                    <li>{{ course.getCourse_number }}</li><br>
                     </ul>
 
                 {% endfor %}
@@ -38,11 +38,12 @@
               {% endfor %}
               {% endif %}
         </select>
-        <button type='submit' name='course_btn'>Add</button>
+        <button class='btn' type='submit' name='course_btn'>Add</button>
       </form>
-      <form action='/delete_all_students' method='post'>
-        <button type='submit' class="delete_student">Clear All</button>
+      <form action='/{{ student.getId }}/deleteStudent' method='post'>
+        <button type='submit' name="delete_student" class='btn'>Delete Student</button>
       </form>
+      <p><a href='/'>Home</a></p>
     </div>
   </body>
 </html>

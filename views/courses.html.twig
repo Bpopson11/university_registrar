@@ -10,15 +10,12 @@
       <h1>Student Database</h1>
     </div>
     <div class="container">
-      <h3>{{ course.getCourse_name }}</h3>
+      <h3>{{ course.getCourse_name }} ({{ course.getCourse_number }})</h3>
       {% if students is not empty %}
           <p>Here are all of {{ course.getCourse_name }}'s class roster</p>
           <ul>
                 {% for student in students %}
                     <li>{{ student.getName }}</li>
-                    <ul>
-                    <li>{{ student.getEnroll_date }}</li>
-                    </ul>
                 {% endfor %}
           </ul>
       {% else %}
@@ -36,12 +33,12 @@
               {% endfor %}
               {% endif %}
         </select>
-        <button type='submit' name='student_btn'>Add</button>
+        <button class='btn' type='submit' name='student_btn'>Add</button>
       </form>
-
-      <form action='/delete_all_courses' method='post'>
-        <button type='submit' class="delete_course">Clear All</button>
+      <form action='/{{ course.getId }}/deleteCourse' method='post'>
+        <button type='submit' name="delete_course" class='btn'>Delete Course</button>
       </form>
+      <p><a href='/'>Home</a></p>
     </div>
   </body>
 </html>

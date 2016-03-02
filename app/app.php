@@ -67,6 +67,18 @@
         return $app['twig']->render('index.html.twig', array('courses' =>Course::getAll(), 'students' =>Student::getAll()));
     });
 
+    $app->post("/{id}/deleteStudent", function($id) use ($app) {
+        $student = Student::findStudent($id);
+        $student->deleteStudent();
+        return $app['twig']->render('index.html.twig', array('courses' =>Course::getAll(), 'students' =>Student::getAll()));
+    });
+
+    $app->post("/{id}/deleteCourse", function($id) use ($app) {
+        $course = Course::findCourse($id);
+        $course->deleteCourse();
+        return $app['twig']->render('index.html.twig', array('courses' =>Course::getAll(), 'students' =>Student::getAll()));
+    });
+
     $app->post("/delete_all_courses", function() use ($app) {
         Course::deleteAll();
         return $app['twig']->render('index.html.twig', array('students' =>Student::getAll(), 'courses' =>Course::getAll()));

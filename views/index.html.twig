@@ -57,9 +57,8 @@
                 <p>Here are all your courses</p>
                 <ul>
                       {% for course in courses %}
-                          <li><a href="/courses/{{ course.getId }}">{{ course.getCourse_name }}</a></li>
+                          <li><a href="/courses/{{ course.getId }}">{{ course.getCourse_name }}</a> ({{ course.getCourse_number }})</li>
                           <ul>
-                            <li>Course Number: {{ course.getCourse_number }}</li>
                           </ul><br>
                       {% endfor %}
                 </ul>

@@ -66,6 +66,7 @@ class Course
     function deleteCourse()
     {
         $GLOBALS['DB']->exec("DELETE FROM courses WHERE id = {$this->getId()};");
+        $GLOBALS['DB']->exec("DELETE FROM roster WHERE course_id = {$this->getId()};");
     }
 
     function updateCourseName($new_course_name)

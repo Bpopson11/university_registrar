@@ -66,6 +66,7 @@ class Student
     function deleteStudent()
     {
         $GLOBALS['DB']->exec("DELETE FROM students WHERE id = {$this->getId()};");
+        $GLOBALS['DB']->exec("DELETE FROM roster WHERE student_id = {$this->getId()};");
     }
 
     function updateStudentName($new_name)
